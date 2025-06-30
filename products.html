@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - CozyHaven Furniture</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">CozyHaven</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="checkout.html">Checkout</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="product-listing-page">
+        <aside class="filters">
+            <h2>Filters</h2>
+            <div class="filter-group">
+                <h3>Price Range</h3>
+                <label><input type="radio" name="price" value="all" checked> All</label><br>
+                <label><input type="radio" name="price" value="under500"> Under $500</label><br>
+                <label><input type="radio" name="price" value="500-1000"> $500 - $1000</label><br>
+                <label><input type="radio" name="price" value="over1000"> Over $1000</label>
+            </div>
+            <div class="filter-group">
+                <h3>Color</h3>
+                <label><input type="checkbox" name="color" value="white"> White</label><br>
+                <label><input type="checkbox" name="color" value="beige"> Beige</label><br>
+                <label><input type="checkbox" name="color" value="brown"> Brown</label><br>
+                <label><input type="checkbox" name="color" value="gray"> Gray</label>
+            </div>
+            <div class="filter-group">
+                <h3>Material</h3>
+                <label><input type="checkbox" name="material" value="wood"> Wood</label><br>
+                <label><input type="checkbox" name="material" value="fabric"> Fabric</label><br>
+                <label><input type="checkbox" name="material" value="metal"> Metal</label>
+            </div>
+            <button class="btn-filter">Apply Filters</button>
+        </aside>
+
+        <section class="product-list">
+            <h2>All Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Elegant+Chair" alt="Elegant Chair">
+                    <h3>Elegant Chair</h3>
+                    <p>$249.99</p>
+                    <a href="product-detail.html?id=4" class="btn-small">View Details</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Coffee+Table" alt="Coffee Table">
+                    <h3>Coffee Table</h3>
+                    <p>$350.00</p>
+                    <a href="product-detail.html?id=5" class="btn-small">View Details</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Book+Shelf" alt="Book Shelf">
+                    <h3>Book Shelf</h3>
+                    <p>$499.00</p>
+                    <a href="product-detail.html?id=6" class="btn-small">View Details</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Desk+Lamp" alt="Desk Lamp">
+                    <h3>Desk Lamp</h3>
+                    <p>$89.99</p>
+                    <a href="product-detail.html?id=7" class="btn-small">View Details</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Wardrobe" alt="Wardrobe">
+                    <h3>Wardrobe</h3>
+                    <p>$850.00</p>
+                    <a href="product-detail.html?id=8" class="btn-small">View Details</a>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Side+Table" alt="Side Table">
+                    <h3>Side Table</h3>
+                    <p>$199.99</p>
+                    <a href="product-detail.html?id=9" class="btn-small">View Details</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 CozyHaven Furniture. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
