@@ -53,7 +53,7 @@
         <h1 class="text-5xl font-extrabold text-center mb-12 text-stone-800 leading-tight">Checkout</h1>
 
         <div class="flex flex-col lg:flex-row gap-10">
-            <!-- Shipping Information Section -->
+            <!-- Shipping and Payment Information Section -->
             <div class="lg:w-2/3 bg-stone-100 rounded-xl shadow-lg p-8">
                 <h2 class="text-3xl font-bold text-stone-800 mb-6">Shipping Information</h2>
                 <form>
@@ -95,22 +95,54 @@
                     </div>
 
                     <h2 class="text-3xl font-bold text-stone-800 mb-6 mt-10">Payment Information</h2>
-                    <div class="mb-6">
-                        <label for="cardName" class="block text-stone-700 text-sm font-semibold mb-2">Name on Card</label>
-                        <input type="text" id="cardName" name="cardName" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="John Doe" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="cardNumber" class="block text-stone-700 text-sm font-semibold mb-2">Card Number</label>
-                        <input type="text" id="cardNumber" name="cardNumber" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="XXXX-XXXX-XXXX-XXXX" required>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div>
-                            <label for="expiryDate" class="block text-stone-700 text-sm font-semibold mb-2">Expiry Date (MM/YY)</label>
-                            <input type="text" id="expiryDate" name="expiryDate" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="12/25" required>
-                        </div>
-                        <div>
-                            <label for="cvv" class="block text-stone-700 text-sm font-semibold mb-2">CVV</label>
-                            <input type="text" id="cvv" name="cvv" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="123" required>
+                    <!-- Payment Methods Section -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-stone-800 mb-4">Choose Payment Method:</h3>
+                        <div class="flex flex-col space-y-4">
+                            <!-- Debit/Credit Card Option -->
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="paymentMethod" value="card" checked>
+                                <span class="ml-2 text-stone-700 text-lg">Debit/Credit Card</span>
+                            </label>
+                            <div id="cardDetails" class="ml-7 p-4 border border-stone-300 rounded-lg bg-stone-50">
+                                <div class="mb-4">
+                                    <label for="cardName" class="block text-stone-700 text-sm font-semibold mb-2">Name on Card</label>
+                                    <input type="text" id="cardName" name="cardName" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="John Doe" required>
+                                </div>
+                                <div class="mb-4">
+                                    <label for="cardNumber" class="block text-stone-700 text-sm font-semibold mb-2">Card Number</label>
+                                    <input type="text" id="cardNumber" name="cardNumber" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="XXXX-XXXX-XXXX-XXXX" required>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="expiryDate" class="block text-stone-700 text-sm font-semibold mb-2">Expiry Date (MM/YY)</label>
+                                        <input type="text" id="expiryDate" name="expiryDate" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="12/25" required>
+                                    </div>
+                                    <div>
+                                        <label for="cvv" class="block text-stone-700 text-sm font-semibold mb-2">CVV</label>
+                                        <input type="text" id="cvv" name="cvv" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="123" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- UPI Options (Gpay, Paytm, PhonePe) -->
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="paymentMethod" value="upi">
+                                <span class="ml-2 text-stone-700 text-lg">UPI (Gpay, Paytm, PhonePe, etc.)</span>
+                            </label>
+                            <div id="upiDetails" class="ml-7 p-4 border border-stone-300 rounded-lg bg-stone-50 hidden">
+                                <div class="mb-4">
+                                    <label for="upiId" class="block text-stone-700 text-sm font-semibold mb-2">Enter your UPI ID</label>
+                                    <input type="text" id="upiId" name="upiId" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600" placeholder="yourname@upi" required>
+                                </div>
+                                <p class="text-sm text-stone-600">You will receive a payment request on your UPI app.</p>
+                            </div>
+
+                            <!-- Cash on Delivery Option -->
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="paymentMethod" value="cod">
+                                <span class="ml-2 text-stone-700 text-lg">Cash on Delivery</span>
+                            </label>
                         </div>
                     </div>
 
@@ -167,7 +199,6 @@
                     </div>
                 </div>
 
-                <!-- Changed button type to 'button' and added href for redirection -->
                 <a href="payment-success.html" class="w-full bg-amber-600 text-white font-bold py-4 px-8 rounded-lg text-xl mt-8 hover:bg-amber-700 transition-colors duration-300 shadow-lg transform hover:scale-105 block text-center">
                     Place Order
                 </a>
@@ -207,5 +238,35 @@
             &copy; 2025 FurniCo. All rights reserved.
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentMethodRadios = document.querySelectorAll('input[name="paymentMethod"]');
+            const cardDetails = document.getElementById('cardDetails');
+            const upiDetails = document.getElementById('upiDetails');
+
+            // Function to toggle visibility based on selected payment method
+            function togglePaymentDetails() {
+                if (document.querySelector('input[name="paymentMethod"]:checked').value === 'card') {
+                    cardDetails.classList.remove('hidden');
+                    upiDetails.classList.add('hidden');
+                } else if (document.querySelector('input[name="paymentMethod"]:checked').value === 'upi') {
+                    cardDetails.classList.add('hidden');
+                    upiDetails.classList.remove('hidden');
+                } else { // COD
+                    cardDetails.classList.add('hidden');
+                    upiDetails.classList.add('hidden');
+                }
+            }
+
+            // Add event listeners to radio buttons
+            paymentMethodRadios.forEach(radio => {
+                radio.addEventListener('change', togglePaymentDetails);
+            });
+
+            // Set initial state based on default checked radio
+            togglePaymentDetails();
+        });
+    </script>
 </body>
 </html>
