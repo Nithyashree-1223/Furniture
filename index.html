@@ -3,83 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - CozyHaven Furniture</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>FurniCo - Home</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafaf9; /* Off-White */
+            color: #44403c; /* Walnut Brown for default text */
+        }
+        /* Custom scrollbar for aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d6d3d1; /* Lighter stone */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e; /* Darker stone */
+        }
+        /* Keyframe Animations for Hero Section - kept as is for now */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-down {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .animate-fade-in-right {
+            animation: fadeInRight 1s ease-out forwards;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .animate-zoom-in {
+            animation: zoomIn 1s ease-out forwards;
+            animation-delay: 0.9s;
+        }
+
+        @keyframes blob {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+        }
+        .animate-blob {
+            animation: blob 7s infinite cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <nav>
-            <div class="logo">CozyHaven</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="checkout.html">Checkout</a></li>
+<body class="min-h-screen flex flex-col bg-stone-50 text-stone-800">
+
+    <!-- Header Section -->
+    <header class="bg-stone-800 shadow-md py-4 px-6 md:px-12 lg:px-24 rounded-b-lg">
+        <nav class="flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="text-3xl font-bold text-white hover:text-amber-400 transition-colors duration-300">FurniCo</a>
+            <!-- Navigation Links -->
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="text-white hover:text-amber-400 text-lg font-medium transition-colors duration-300">Home</a></li>
+                <li><a href="product.html" class="text-white hover:text-amber-400 text-lg font-medium transition-colors duration-300">Products</a></li>
+                <li><a href="product-detail.html" class="text-white hover:text-amber-400 text-lg font-medium transition-colors duration-300">Detail</a></li>
+                <li><a href="checkout.html" class="text-white hover:text-amber-400 text-lg font-medium transition-colors duration-300">Checkout</a></li>
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
         </nav>
     </header>
 
-    <main>
-        <section class="hero-banner">
-            <div class="banner-content">
-                <h1>Your Comfort, Our Priority</h1>
-                <p>Discover beautiful and affordable furniture for every home.</p>
-                <a href="products.html" class="btn">Shop Now</a>
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative bg-gradient-to-r from-amber-700 to-amber-900 text-white py-20 md:py-32 overflow-hidden mb-12">
+            <div class="container mx-auto px-6 md:px-12 lg:px-24 flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                    <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in-down">
+                        Elevate Your Home with <span class="text-stone-200">Exquisite Furniture</span>
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 opacity-90 animate-fade-in-up">
+                        Discover timeless designs and unparalleled comfort for every room.
+                    </p>
+                    <!-- Corrected href for "Shop Now" button -->
+                    <a href="product.html" class="bg-stone-100 text-amber-700 hover:bg-stone-200 font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 inline-block animate-zoom-in">
+                        Shop Now
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-fade-in-right">
+                    <!-- Placeholder image for hero section -->
+                    <img src="https://placehold.co/600x400/78350f/ffffff?text=Modern+Living+Room" alt="Modern Sofa" class="w-full max-w-md md:max-w-xl rounded-xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                </div>
+            </div>
+            <!-- Background Blob/Shape for visual interest -->
+            <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-600 opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
+            <div class="absolute -top-10 -right-10 w-96 h-96 bg-amber-500 opacity-20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
+        </section>
+
+        <!-- Featured Categories Section -->
+        <section class="container mx-auto px-6 md:px-12 lg:px-24 py-12">
+            <h2 class="text-4xl font-bold text-center mb-12 text-stone-800">Shop by Category</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Category Card 1 -->
+                <div class="bg-stone-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <img src="https://placehold.co/400x250/78350f/ffffff?text=Sofa+Collection" alt="Living Room Furniture" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Living Room</h3>
+                    <p class="text-stone-600 mb-4">Sofas, Coffee Tables, TV Units</p>
+                    <a href="product.html" class="text-amber-600 hover:text-amber-800 font-medium flex items-center">
+                        Explore <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+                <!-- Category Card 2 -->
+                <div class="bg-stone-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <img src="https://placehold.co/400x250/78350f/ffffff?text=Bedroom+Sets" alt="Bedroom Furniture" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Bedroom</h3>
+                    <p class="text-stone-600 mb-4">Beds, Wardrobes, Dressers</p>
+                    <a href="product.html" class="text-amber-600 hover:text-amber-800 font-medium flex items-center">
+                        Explore <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+                <!-- Category Card 3 -->
+                <div class="bg-stone-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <img src="https://placehold.co/400x250/78350f/ffffff?text=Dining+Tables" alt="Dining Room Furniture" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Dining Room</h3>
+                    <p class="text-stone-600 mb-4">Dining Tables, Chairs, Buffets</p>
+                    <a href="product.html" class="text-amber-600 hover:text-amber-800 font-medium flex items-center">
+                        Explore <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
+                <!-- Category Card 4 -->
+                <div class="bg-stone-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+                    <img src="https://placehold.co/400x250/78350f/ffffff?text=Office+Desks" alt="Office Furniture" class="w-full h-48 object-cover rounded-md mb-4">
+                    <h3 class="text-2xl font-semibold text-stone-800 mb-2">Home Office</h3>
+                    <p class="text-stone-600 mb-4">Desks, Chairs, Bookcases</p>
+                    <a href="product.html" class="text-amber-600 hover:text-amber-800 font-medium flex items-center">
+                        Explore <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </a>
+                </div>
             </div>
         </section>
 
-        <section class="featured-categories">
-            <h2>Featured Categories</h2>
-            <div class="categories-grid">
-                <div class="category-item">
-                    <i class="fas fa-couch"></i>
-                    <h3>Living Room</h3>
-                </div>
-                <div class="category-item">
-                    <i class="fas fa-bed"></i>
-                    <h3>Bedroom</h3>
-                </div>
-                <div class="category-item">
-                    <i class="fas fa-chair"></i>
-                    <h3>Dining Room</h3>
-                </div>
-            </div>
-        </section>
-
-        <section class="trending-products">
-            <h2>Trending Products</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Comfy+Sofa" alt="Comfy Sofa">
-                    <h3>Comfy Sofa</h3>
-                    <p>$799.99</p>
-                    <a href="product-detail.html?id=1" class="btn-small">View Details</a>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Wooden+Bed" alt="Wooden Bed">
-                    <h3>Wooden Bed</h3>
-                    <p>$1199.99</p>
-                    <a href="product-detail.html?id=2" class="btn-small">View Details</a>
-                </div>
-                <div class="product-card">
-                    <img src="https://via.placeholder.com/300x200/d8c1a7/8b4513?text=Dining+Table" alt="Dining Table">
-                    <h3>Dining Table</h3>
-                    <p>$599.99</p>
-                    <a href="product-detail.html?id=3" class="btn-small">View Details</a>
-                </div>
+        <!-- Call to Action / Newsletter Section -->
+        <section class="bg-amber-600 py-16 mt-12">
+            <div class="container mx-auto px-6 md:px-12 lg:px-24 text-center text-white">
+                <h2 class="text-4xl font-bold mb-4">Join Our Newsletter</h2>
+                <p class="text-xl mb-8 opacity-90">Stay updated on new arrivals, special offers, and exclusive discounts.</p>
+                <form class="flex flex-col md:flex-row justify-center items-center gap-4">
+                    <input type="email" placeholder="Enter your email address" class="p-4 rounded-lg w-full md:w-1/3 text-stone-800 focus:outline-none focus:ring-2 focus:ring-amber-800 transition-all duration-300">
+                    <button type="submit" class="bg-stone-100 text-amber-700 hover:bg-stone-200 font-bold py-4 px-8 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105">
+                        Subscribe
+                    </button>
+                </form>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 CozyHaven Furniture. All rights reserved.</p>
+    <!-- Footer Section -->
+    <footer class="bg-stone-800 text-white py-10 px-6 md:px-12 lg:px-24 mt-12 rounded-t-lg">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- About Us -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">FurniCo</h3>
+                <p class="text-stone-400">
+                    Your destination for high-quality, stylish, and comfortable furniture. We believe in crafting spaces that inspire.
+                </p>
+            </div>
+            <!-- Quick Links -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="text-stone-400 hover:text-white transition-colors duration-200">Home</a></li>
+                    <li><a href="product.html" class="text-stone-400 hover:text-white transition-colors duration-200">Products</a></li>
+                    <li><a href="#" class="text-stone-400 hover:text-white transition-colors duration-200">About Us</a></li>
+                    <li><a href="#" class="text-stone-400 hover:text-white transition-colors duration-200">Contact</a></li>
+                </ul>
+            </div>
+            <!-- Contact Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                <p class="text-stone-400">123 Furniture Lane, Design City, DC 90210</p>
+                <p class="text-stone-400">Email: info@furnico.com</p>
+                <p class="text-stone-400">Phone: +91 555 123-4567</p>
+            </div>
+        </div>
+        <div class="border-t border-stone-700 mt-8 pt-8 text-center text-stone-500">
+            &copy; 2025 FurniCo. All rights reserved.
+        </div>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
