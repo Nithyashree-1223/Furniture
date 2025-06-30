@@ -62,11 +62,11 @@
                     <h3 class="text-xl font-semibold text-stone-800 mb-4">Category</h3>
                     <div class="flex flex-col space-y-2">
                         <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox text-amber-600 h-5 w-5 rounded" name="category" value="living-room">
+                            <input type="checkbox" class="form-checkbox text-amber-600 h-5 w-5 rounded filter-checkbox" name="category" value="living-room">
                             <span class="ml-2 text-stone-700">Living Room</span>
                         </label>
                         <label class="inline-flex items-center">
-                            <input type="checkbox" class="form-checkbox text-amber-600 h-5 w-5 rounded" name="category" value="bedroom">
+                            <input type="checkbox" class="form-checkbox text-amber-600 h-5 w-5 rounded filter-checkbox" name="category" value="bedroom">
                             <span class="ml-2 text-stone-700">Bedroom</span>
                         </label>
                         <label class="inline-flex items-center">
@@ -91,10 +91,10 @@
                 <!-- Price Range Filter -->
                 <div class="mb-8">
                     <h3 class="text-xl font-semibold text-stone-800 mb-4">Price Range</h3>
-                    <input type="range" min="0" max="150000" value="75000" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-600" id="priceRange">
+                    <input type="range" min="0" max="150000" value="150000" class="w-full h-2 bg-stone-300 rounded-lg appearance-none cursor-pointer accent-amber-600" id="priceRange">
                     <div class="flex justify-between text-sm text-stone-600 mt-2">
                         <span>₹0</span>
-                        <span id="priceValue">₹75,000</span>
+                        <span id="priceValue">₹1,50,000+</span>
                         <span>₹1,50,000+</span>
                     </div>
                 </div>
@@ -176,11 +176,11 @@
                     </div>
                 </div>
 
-                <!-- Size Filter (Example - can be expanded) -->
+                <!-- Size Filter -->
                 <div class="mb-8">
                     <h3 class="text-xl font-semibold text-stone-800 mb-4">Size</h3>
-                    <select name="size" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 bg-stone-50 text-stone-700">
-                        <option value="">Any Size</option>
+                    <select id="sizeFilter" name="size" class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 bg-stone-50 text-stone-700">
+                        <option value="all">Any Size</option>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
@@ -188,10 +188,10 @@
                     </select>
                 </div>
 
-                <!-- Brand Filter (Example) -->
+                <!-- Brand Filter -->
                 <div class="mb-8">
                     <h3 class="text-xl font-semibold text-stone-800 mb-4">Brand</h3>
-                    <input type="text" placeholder="Search brand..." class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 bg-stone-50 text-stone-700">
+                    <input type="text" id="brandFilter" placeholder="Search brand..." class="w-full p-3 border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-600 bg-stone-50 text-stone-700">
                 </div>
 
                 <!-- Features Filter -->
@@ -218,32 +218,37 @@
                     <h3 class="text-xl font-semibold text-stone-800 mb-4">Customer Rating</h3>
                     <div class="flex flex-col space-y-2">
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="rating" value="4-plus">
+                            <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="rating" value="4">
                             <span class="ml-2 text-stone-700">4 Stars & Up</span>
                         </label>
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="rating" value="3-plus">
+                            <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="rating" value="3">
                             <span class="ml-2 text-stone-700">3 Stars & Up</span>
                         </label>
                         <label class="inline-flex items-center">
-                            <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="rating" value="2-plus">
+                            <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="rating" value="2">
                             <span class="ml-2 text-stone-700">2 Stars & Up</span>
+                        </label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" class="form-radio text-amber-600 h-5 w-5" name="rating" value="0" checked>
+                            <span class="ml-2 text-stone-700">Any Rating</span>
                         </label>
                     </div>
                 </div>
 
-                <button class="w-full bg-amber-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-700 transition-colors duration-300 shadow-md">
+                <button id="applyFiltersBtn" class="w-full bg-amber-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-amber-700 transition-colors duration-300 shadow-md">
                     Apply Filters
                 </button>
-                <button class="w-full bg-stone-200 text-stone-800 font-bold py-3 px-6 rounded-lg hover:bg-stone-300 transition-colors duration-300 shadow-md mt-4">
+                <button id="clearFiltersBtn" class="w-full bg-stone-200 text-stone-800 font-bold py-3 px-6 rounded-lg hover:bg-stone-300 transition-colors duration-300 shadow-md mt-4">
                     Clear Filters
                 </button>
             </aside>
 
             <!-- Product Grid -->
-            <div class="lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+            <div id="productGrid" class="lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
                 <!-- Product Card 1 -->
-                <div class="bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden">
+                <div class="product-card bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden"
+                    data-category="living-room" data-price="49900" data-material="fabric" data-color="grey" data-style="modern" data-rating="4" data-brand="FurniCo" data-features="" data-size="medium">
                     <img src="https://placehold.co/600x400/78350f/ffffff?text=Velvet+Armchair" alt="Velvet Armchair" class="w-full h-56 object-cover rounded-t-xl">
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-stone-800 mb-2">Luxurious Velvet Armchair</h2>
@@ -267,7 +272,8 @@
                 </div>
 
                 <!-- Product Card 2 -->
-                <div class="bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden">
+                <div class="product-card bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden"
+                    data-category="office" data-price="29900" data-material="wood" data-color="brown" data-style="minimalist" data-rating="3" data-brand="ModernDesigns" data-features="" data-size="large">
                     <img src="https://placehold.co/600x400/78350f/ffffff?text=Sleek+Desk" alt="Minimalist Desk" class="w-full h-56 object-cover rounded-t-xl">
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-stone-800 mb-2">Modern Minimalist Desk</h2>
@@ -290,7 +296,8 @@
                 </div>
 
                 <!-- Product Card 3 -->
-                <div class="bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden">
+                <div class="product-card bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden"
+                    data-category="dining" data-price="89900" data-material="wood" data-color="brown" data-style="traditional" data-rating="4" data-brand="HeritageCraft" data-features="" data-size="large">
                     <img src="https://placehold.co/600x400/78350f/ffffff?text=Wood+Dining+Table" alt="Solid Wood Dining Table" class="w-full h-56 object-cover rounded-t-xl">
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-stone-800 mb-2">Elegant Solid Wood Dining Table</h2>
@@ -313,7 +320,8 @@
                 </div>
 
                 <!-- Product Card 4 -->
-                <div class="bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden">
+                <div class="product-card bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden"
+                    data-category="bedroom" data-price="129900" data-material="metal" data-color="grey" data-style="modern" data-rating="5" data-brand="DreamSleep" data-features="" data-size="extra-large">
                     <img src="https://placehold.co/600x400/78350f/ffffff?text=Plush+King+Bed" alt="King Size Bed" class="w-full h-56 object-cover rounded-t-xl">
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-stone-800 mb-2">Luxury King Size Bed Frame</h2>
@@ -336,7 +344,8 @@
                 </div>
 
                 <!-- Product Card 5 -->
-                <div class="bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden">
+                <div class="product-card bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden"
+                    data-category="living-room" data-price="34900" data-material="wood" data-color="white" data-style="modern" data-rating="4" data-brand="OrganizeHome" data-features="storage" data-size="large">
                     <img src="https://placehold.co/600x400/78350f/ffffff?text=Stylish+Bookshelf" alt="Bookshelf" class="w-full h-56 object-cover rounded-t-xl">
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-stone-800 mb-2">Spacious Modern Bookshelf</h2>
@@ -348,7 +357,7 @@
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
-                                <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+                                <svg class="w-5 h-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
                                 <span class="ml-1 text-stone-600 text-sm">(75 reviews)</span>
                             </div>
                         </div>
@@ -359,7 +368,8 @@
                 </div>
 
                 <!-- Product Card 6 -->
-                <div class="bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden">
+                <div class="product-card bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden"
+                    data-category="living-room" data-price="18900" data-material="wood" data-color="brown" data-style="modern" data-rating="4" data-brand="WoodCraft" data-features="" data-size="medium">
                     <img src="https://placehold.co/600x400/78350f/ffffff?text=Sleek+Coffee+Table" alt="Coffee Table" class="w-full h-56 object-cover rounded-t-xl">
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-stone-800 mb-2">Contemporary Coffee Table</h2>
@@ -382,7 +392,8 @@
                 </div>
 
                 <!-- Product Card 7 -->
-                <div class="bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden">
+                <div class="product-card bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden"
+                    data-category="living-room" data-price="79900" data-material="leather" data-color="dark-gray" data-style="modern" data-rating="4" data-brand="ComfortLiving" data-features="adjustable" data-size="medium">
                     <img src="https://placehold.co/600x400/78350f/ffffff?text=Recliner+Comfort" alt="Leather Recliner" class="w-full h-56 object-cover rounded-t-xl">
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-stone-800 mb-2">Premium Leather Recliner</h2>
@@ -405,7 +416,8 @@
                 </div>
 
                 <!-- Product Card 8 -->
-                <div class="bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden">
+                <div class="product-card bg-stone-100 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1 overflow-hidden"
+                    data-category="living-room" data-price="24900" data-material="fabric" data-color="blue" data-style="modern" data-rating="3" data-brand="ChicHome" data-features="" data-size="small">
                     <img src="https://placehold.co/600x400/78350f/ffffff?text=Modern+Accent+Chair" alt="Accent Chair" class="w-full h-56 object-cover rounded-t-xl">
                     <div class="p-6">
                         <h2 class="text-2xl font-semibold text-stone-800 mb-2">Stylish Accent Chair</h2>
@@ -464,12 +476,188 @@
     </footer>
 
     <script>
-        // Script for Price Range display
-        const priceRange = document.getElementById('priceRange');
-        const priceValue = document.getElementById('priceValue');
+        document.addEventListener('DOMContentLoaded', function() {
+            const priceRange = document.getElementById('priceRange');
+            const priceValue = document.getElementById('priceValue');
+            const applyFiltersBtn = document.getElementById('applyFiltersBtn');
+            const clearFiltersBtn = document.getElementById('clearFiltersBtn');
+            const productCards = document.querySelectorAll('.product-card');
 
-        priceRange.addEventListener('input', (event) => {
-            priceValue.textContent = '₹' + new Intl.NumberFormat('en-IN').format(event.target.value);
+            // Update price range display
+            priceRange.addEventListener('input', (event) => {
+                priceValue.textContent = '₹' + new Intl.NumberFormat('en-IN').format(event.target.value) + (event.target.value == 150000 ? '+' : '');
+            });
+
+            // Function to get active filters
+            function getActiveFilters() {
+                const filters = {
+                    categories: [],
+                    materials: [],
+                    colors: [],
+                    styles: [],
+                    minPrice: 0,
+                    maxPrice: parseInt(priceRange.value),
+                    size: '',
+                    brand: '',
+                    features: [],
+                    minRating: 0
+                };
+
+                // Categories
+                document.querySelectorAll('input[name="category"]:checked').forEach(checkbox => {
+                    filters.categories.push(checkbox.value);
+                });
+
+                // Materials
+                document.querySelectorAll('input[name="material"]:checked').forEach(checkbox => {
+                    filters.materials.push(checkbox.value);
+                });
+
+                // Colors
+                document.querySelectorAll('input[name="color"]:checked').forEach(checkbox => {
+                    filters.colors.push(checkbox.value);
+                });
+
+                // Styles
+                document.querySelectorAll('input[name="style"]:checked').forEach(checkbox => {
+                    filters.styles.push(checkbox.value);
+                });
+
+                // Price Range (already handled by maxPrice from slider)
+                // Size
+                const sizeSelect = document.getElementById('sizeFilter');
+                if (sizeSelect.value !== 'all') {
+                    filters.size = sizeSelect.value;
+                }
+
+                // Brand
+                const brandInput = document.getElementById('brandFilter');
+                if (brandInput.value.trim() !== '') {
+                    filters.brand = brandInput.value.trim().toLowerCase();
+                }
+
+                // Features
+                document.querySelectorAll('input[name="feature"]:checked').forEach(checkbox => {
+                    filters.features.push(checkbox.value);
+                });
+
+                // Customer Rating
+                const selectedRating = document.querySelector('input[name="rating"]:checked');
+                if (selectedRating) {
+                    filters.minRating = parseInt(selectedRating.value);
+                }
+
+                return filters;
+            }
+
+            // Function to filter products
+            function filterProducts() {
+                const activeFilters = getActiveFilters();
+
+                productCards.forEach(card => {
+                    const category = card.dataset.category;
+                    const price = parseInt(card.dataset.price);
+                    const material = card.dataset.material;
+                    const color = card.dataset.color;
+                    const style = card.dataset.style;
+                    const rating = parseInt(card.dataset.rating);
+                    const brand = card.dataset.brand ? card.dataset.brand.toLowerCase() : '';
+                    // Ensure features is an array, even if data-features is empty
+                    const features = card.dataset.features ? card.dataset.features.split(',') : [];
+                    const size = card.dataset.size; // Get the size from data attribute
+
+                    let isVisible = true;
+
+                    // Filter by Category
+                    if (activeFilters.categories.length > 0 && !activeFilters.categories.includes(category)) {
+                        isVisible = false;
+                    }
+
+                    // Filter by Price Range
+                    if (price > activeFilters.maxPrice) {
+                        isVisible = false;
+                    }
+
+                    // Filter by Material
+                    if (activeFilters.materials.length > 0 && !activeFilters.materials.includes(material)) {
+                        isVisible = false;
+                    }
+
+                    // Filter by Color
+                    if (activeFilters.colors.length > 0 && !activeFilters.colors.includes(color)) {
+                        isVisible = false;
+                    }
+
+                    // Filter by Style
+                    if (activeFilters.styles.length > 0 && !activeFilters.styles.includes(style)) {
+                        isVisible = false;
+                    }
+
+                    // Filter by Size (now fully functional with data-size attributes)
+                    if (activeFilters.size && activeFilters.size !== 'all' && size !== activeFilters.size) {
+                        isVisible = false;
+                    }
+
+                    // Filter by Brand
+                    if (activeFilters.brand && !brand.includes(activeFilters.brand)) {
+                        isVisible = false;
+                    }
+
+                    // Filter by Features
+                    if (activeFilters.features.length > 0) {
+                        const hasAllFeatures = activeFilters.features.every(filterFeature =>
+                            features.includes(filterFeature)
+                        );
+                        if (!hasAllFeatures) {
+                            isVisible = false;
+                        }
+                    }
+
+                    // Filter by Customer Rating
+                    if (rating < activeFilters.minRating) {
+                        isVisible = false;
+                    }
+
+
+                    if (isVisible) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+
+            // Event listener for Apply Filters button
+            applyFiltersBtn.addEventListener('click', filterProducts);
+
+            // Event listener for Clear Filters button
+            clearFiltersBtn.addEventListener('click', () => {
+                // Reset all checkboxes
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+
+                // Reset radio buttons for rating
+                document.querySelector('input[name="rating"][value="0"]').checked = true;
+
+                // Reset price range slider
+                priceRange.value = 150000;
+                priceValue.textContent = '₹1,50,000+';
+
+                // Reset size dropdown
+                document.getElementById('sizeFilter').value = 'all';
+
+                // Reset brand input
+                document.getElementById('brandFilter').value = '';
+
+                // Show all products
+                productCards.forEach(card => {
+                    card.classList.remove('hidden');
+                });
+            });
+
+            // Initial filter application on load (to ensure correct price range display)
+            filterProducts();
         });
     </script>
 </body>
